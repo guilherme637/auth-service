@@ -1,6 +1,0 @@
-<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
-    <entity name="App\Domain\Entity\Scope" schema="public" table="scopes" read-only="true">
-        <id name="id" type="integer" column="nu_seq_scopes"/>
-        <field name="scope" type="string" column="ds_scope" length="15" nullable="false"/>
-    </entity>
-</doctrine-mapping>

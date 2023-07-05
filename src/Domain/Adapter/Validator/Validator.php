@@ -20,12 +20,16 @@ class Validator implements ValidatorAdapterInterface
         $collectionErrors = new ArrayCollection();
 
         if (count($errors) > 0) {
+<<<<<<< Updated upstream
             /** @var ConstraintViolation $error */
             foreach ($errors as $error) {
                 $collectionErrors->add(
                     '{{' . $error->getPropertyPath() . '}} ' . $error->getMessage()
                 );
             }
+=======
+            throw new BadRequestHttpException($errors->get(0)->getMessage());
+>>>>>>> Stashed changes
         }
 
         throw new BadRequestHttpException(

@@ -1,5 +1,5 @@
 services:
-  php:
+  php_auth_service:
     container_name: php
     build:
       context: .
@@ -9,7 +9,7 @@ services:
     networks:
       - backend
 
-  apache2:
+  apache2_auth_service:
     container_name: apache
     build:
       context: .
@@ -22,17 +22,22 @@ services:
     networks:
       - backend
     depends_on:
-      - php
-  db:
+      - php_auth_service
+  db_auth_service:
     container_name: postgres
     build:
       context: .
       dockerfile: ./devops/docker/postgres/Dockerfile
 #    restart: always
+    environment:
+      POSTGRES_DB: 'auth_service'
+      POSTGRES_USER: 'user_auth_service'
+      POSTGRES_PASSWORD: 'authservice'
     ports:
       - 5432:5432
     volumes:
       - .:/var/lib/postegresql/data:rw
+      - .:/data/auth-service
       - ./devops/docker/postgres/create_fixtures.sql:/docker-entrypoint-initdb.d/create_fixtures.sql
     networks:
       backend:

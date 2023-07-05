@@ -1,0 +1,12 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Domain\Entity\User" schema="public" table="users">
+        <id name="id" type="integer" column="nu_seq_users">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="username" type="string" column="username" length="25"/>
+        <field name="email" type="string" column="email" length="70"/>
+        <field name="password" type="string" column="password"/>
+        <field name="scope" type="simple_array" column="scopes"/>
+    </entity>
+</doctrine-mapping>

@@ -27,7 +27,7 @@ abstract class ResolverAbstract implements ResolverHandlerInterface
 
         return !is_null($this->handler)
             ? $this->handler->handle($throwable)
-            : new ResponseVO(new InternalServerHttpException());
+            : new ResponseVO($_ENV['APP_ENV'] !== 'prod' ? $throwable : new InternalServerHttpException());
     }
 
     abstract public function shoudCall(\Throwable $throwable): bool;
