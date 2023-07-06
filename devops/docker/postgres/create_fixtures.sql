@@ -7,48 +7,44 @@ CREATE TABLE IF NOT EXISTS client_scope
 
 CREATE TABLE IF NOT EXISTS redirect_uri
 (
-    client_id VARCHAR     NOT NULL,
-    uri_redirect  VARCHAR(15) NOT NULL
+    client_id    VARCHAR     NOT NULL,
+    uri_redirect VARCHAR(15) NOT NULL
 );
 
-<<<<<<< Updated upstream
-CREATE TABLE IF NOT EXISTS authorization_serve (
-   nu_seq_authorization_serve serial PRIMARY KEY,
-   client_id VARCHAR NOT NULL,
-   secret VARCHAR NOT NULL,
-   redirect_uri VARCHAR (225) NOT NULL,
-   nu_seq_scopes INTEGER NOT NULL,
-   CONSTRAINT fk_nu_seq_scopes FOREIGN KEY(nu_seq_scopes) REFERENCES scopes(nu_seq_scopes)
-);
-=======
 CREATE TABLE IF NOT EXISTS client
 (
-    client_id                  serial PRIMARY KEY,
-    client_secret              VARCHAR      NOT NULL,
+    client_id                  VARCHAR PRIMARY KEY NOT NULL UNIQUE,
+    client_secret              VARCHAR             NOT NULL,
     token_endpoint_auth_method VARCHAR     DEFAULT 'client_secret_post',
-    redirect_uri               VARCHAR(225) NOT NULL,
-    client_name                VARCHAR(120) NOT NULL,
+    redirect_uri               VARCHAR(225)        NOT NULL,
+    client_name                VARCHAR(120)        NOT NULL,
     grant_type                 VARCHAR(30) DEFAULT 'authorization_code',
     client_id_issued_at        timestamp   default now(),
-    client_secret_expires_at   timestamp    NOT NULL
+    client_secret_expires_at   timestamp           NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS users
 (
     nu_seq_users serial PRIMARY KEY,
-    username     VARCHAR(25) NOT NULL UNIQUE,
-    email        VARCHAR(70) NOT NULL UNIQUE,
-    password     VARCHAR     NOT NULL,
-    scopes       INTEGER[]
+    username     VARCHAR(25) NOT NULL UNIQUE UNIQUE,
+    email        VARCHAR(70) NOT NULL UNIQUE UNIQUE,
+    password     VARCHAR     NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS client_scope
+CREATE TABLE IF NOT EXISTS users_scope
 (
-    nu_seq_users INTEGER     NOT NULL,
-    ds_scope     VARCHAR(15) NOT NULL,
+    nu_seq_users_scope serial PRIMARY KEY,
+    nu_seq_users       INTEGER     NOT NULL,
+    ds_scope           VARCHAR(15) NOT NULL,
 
     CONSTRAINT fk_nu_seq_users FOREIGN KEY (nu_seq_users) REFERENCES users (nu_seq_users)
 );
+
+alter table users
+    add nu_seq_users_scope integer not null default 0,
+    add constraint fk_nu_seq_users_scope
+        foreign key (nu_seq_users_scope) references users_scope (nu_seq_users_scope);
+
 
 -- insert into authorization_serve values (
 --     DEFAULT,
@@ -61,4 +57,3 @@ CREATE TABLE IF NOT EXISTS client_scope
 -- insert into scopes values (DEFAULT, 'read');
 -- insert into scopes values (DEFAULT, 'update');
 -- insert into scopes values (DEFAULT, 'delete');
->>>>>>> Stashed changes

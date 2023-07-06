@@ -1,0 +1,13 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Domain\Entity\Client" table="client" schema="public">
+        <id name="clientId" column="client_id" type="string">
+            <generator strategy="NONE"/>
+        </id>
+
+        <field name="clientSecret" type="string" column="client_secret"/>
+        <field name="tokenEndpointAuthMethod" type="string" column="token_endpoint_auth_method"/>
+        <field name="grantType" type="string" column="grant_type"/>
+        <field name="clientIdIssuedAt" type="datetime" column="client_id_issued_at"/>
+        <field name="clientSecretExpiresAt" type="datetime" column="client_secret_expires_at"/>
+    </entity>
+</doctrine-mapping>

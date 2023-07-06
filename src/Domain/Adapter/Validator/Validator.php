@@ -17,23 +17,9 @@ class Validator implements ValidatorAdapterInterface
     public function validate(object $object): void
     {
         $errors = $this->validator->validate($object);
-        $collectionErrors = new ArrayCollection();
 
         if (count($errors) > 0) {
-<<<<<<< Updated upstream
-            /** @var ConstraintViolation $error */
-            foreach ($errors as $error) {
-                $collectionErrors->add(
-                    '{{' . $error->getPropertyPath() . '}} ' . $error->getMessage()
-                );
-            }
-=======
-            throw new BadRequestHttpException($errors->get(0)->getMessage());
->>>>>>> Stashed changes
+            throw new BadRequestHttpException($errors[0]->getMessage());
         }
-
-        throw new BadRequestHttpException(
-            implode(', ', $collectionErrors->toArray())
-        );
     }
 }
