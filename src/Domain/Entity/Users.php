@@ -3,6 +3,7 @@
 namespace App\Domain\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Users
 {
@@ -10,7 +11,7 @@ class Users
     private string $username;
     private string $email;
     private string $password;
-    private ArrayCollection $scopes;
+    private Collection $scopes;
 
     public function __construct()
     {

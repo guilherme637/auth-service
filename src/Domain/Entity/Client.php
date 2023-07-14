@@ -3,23 +3,24 @@
 namespace App\Domain\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Client
 {
+    private int $id;
     private string $clientId;
     private string $clientSecret;
     private string $tokenEndpointAuthMethod;
-    private ArrayCollection $redirecstUri;
+    private Collection $redirecstUri;
     private string $clientName;
     private string $grantType;
     private \DateTime $clientIdIssuedAt;
     private \DateTime $clientSecretExpiresAt;
-    private ArrayCollection $clientScopes;
+    private Collection $clientScopes;
 
-    public function __construct()
+    public function getId(): int
     {
-        $this->redirecstUri = new ArrayCollection();
-        $this->clientScopes = new ArrayCollection();
+        return $this->id;
     }
 
     public function getClientId(): string
@@ -52,14 +53,9 @@ class Client
         $this->tokenEndpointAuthMethod = $tokenEndpointAuthMethod;
     }
 
-    public function getRedirectsUri(): ArrayCollection
+    public function getRedirectsUri(): Collection
     {
         return $this->redirecstUri;
-    }
-
-    public function setRedirectsUri(RedirectUri $redirectUri): void
-    {
-        $this->redirecstUri->add($redirectUri);
     }
 
     public function getClientName(): string
@@ -70,6 +66,16 @@ class Client
     public function setClientName(string $clientName): void
     {
         $this->clientName = $clientName;
+    }
+
+    public function getGrantType(): string
+    {
+        return $this->grantType;
+    }
+
+    public function setGrantType(string $grantType): void
+    {
+        $this->grantType = $grantType;
     }
 
     public function getClientIdIssuedAt(): \DateTime
@@ -92,13 +98,8 @@ class Client
         $this->clientSecretExpiresAt = $clientSecretExpiresAt;
     }
 
-    public function getClientScopes(): ArrayCollection
+    public function getClientScopes(): Collection
     {
         return $this->clientScopes;
-    }
-
-    public function setClientScopes(ClientScope $clientScopes): void
-    {
-        $this->clientScopes->add($clientScopes);
     }
 }

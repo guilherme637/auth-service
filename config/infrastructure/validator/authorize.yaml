@@ -1,0 +1,12 @@
+App\Presentation\Authorize\DTO\AuthorizeRequest:
+  properties:
+    responseType:
+      - NotBlank: { message: 'invalid_request' }
+    clientId:
+      - NotBlank: { message: 'invalid_request' }
+    redirectUri:
+      - NotBlank: { message: 'invalid_request' }
+    scope:
+      - NotBlank: { message: 'invalid_request' }
+    state:
+      - NotBlank: { message: 'invalid_request' }

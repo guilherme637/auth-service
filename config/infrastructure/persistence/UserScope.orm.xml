@@ -3,7 +3,10 @@
         <id name="id" column="nu_seq_scope" type="integer">
             <generator strategy="AUTO"/>
         </id>
-        <one-to-many field="users" target-entity="App\Domain\Entity\Users" mapped-by="scopes"/>
+
+        <many-to-one field="users" target-entity="App\Domain\Entity\Users" inversed-by="scopes">
+            <join-column name="nu_seq_users" referenced-column-name="nu_seq_users" />
+        </many-to-one>
         <field name="dsScope" type="string" column="ds_scope" length="15"/>
     </entity>
 </doctrine-mapping>

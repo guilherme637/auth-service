@@ -4,15 +4,21 @@ namespace App\Domain\Entity;
 
 class ClientScope
 {
-    private string $clientId;
+    private int $id;
+    private Client $clientId;
     private string $dsScope;
 
-    public function getClientId(): string
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getClientId(): Client
     {
         return $this->clientId;
     }
 
-    public function setClientId(string $clientId): void
+    public function setClientId(Client $clientId): void
     {
         $this->clientId = $clientId;
     }

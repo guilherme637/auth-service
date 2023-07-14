@@ -15,4 +15,9 @@ class Serializer implements SerializerInterface
     {
         return $this->serializer->deserialize($data, $type, $format);
     }
+
+    public function fromArray(array $data, string $type): object
+    {
+        return $this->serializer->fromArray($data, $type);
+    }
 }

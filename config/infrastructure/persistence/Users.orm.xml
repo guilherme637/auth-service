@@ -7,8 +7,6 @@
         <field name="username" type="string" column="username" length="25"/>
         <field name="email" type="string" column="email" length="70"/>
         <field name="password" type="string" column="password"/>
-        <many-to-one field="scopes" target-entity="App\Domain\Entity\UserScope" inversed-by="users">
-            <join-column name="nu_seq_scope" referenced-column-name="nu_seq_scope" />
-        </many-to-one>
+        <one-to-many field="scopes" target-entity="App\Domain\Entity\UserScope" mapped-by="users"/>
     </entity>
 </doctrine-mapping>

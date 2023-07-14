@@ -6,4 +6,5 @@ interface SerializerInterface
 {
     public function serialize($data, string $format): string;
     public function deserialize(string $data, string $type, string $format);
+    public function fromArray($data, $type);
 }
