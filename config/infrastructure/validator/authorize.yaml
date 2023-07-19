@@ -2,10 +2,13 @@ App\Presentation\Authorize\DTO\AuthorizeRequest:
   properties:
     responseType:
       - NotBlank: { message: 'invalid_request' }
+      - App\Infrastructure\Validator\Constraint\Authorize\ResponseTypeInvalidConstraint: ~
     clientId:
       - NotBlank: { message: 'invalid_request' }
+      - App\Infrastructure\Validator\Constraint\Authorize\ClientIdInvalidConstraint: ~
     redirectUri:
-      - NotBlank: { message: 'invalid_request' }
+      - NotBlank: ~
+      - App\Infrastructure\Validator\Constraint\Authorize\RedirectUriInvalidConstraint: ~
     scope:
       - NotBlank: { message: 'invalid_request' }
     state:

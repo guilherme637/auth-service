@@ -1,5 +1,10 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
-    <entity name="App\Domain\Entity\Client" table="client">
+    <entity
+            name="App\Domain\Entity\Client"
+            schema="public"
+            table="client"
+            repository-class="App\Infrastructure\Repository\ClientRepository"
+    >
         <id name="id" column="nu_seq_client" type="integer">
             <generator strategy="AUTO"/>
         </id>

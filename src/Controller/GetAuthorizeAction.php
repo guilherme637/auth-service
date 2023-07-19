@@ -20,11 +20,9 @@ class GetAuthorizeAction
 
     public function __invoke(Request $request)
     {
-        $this->serializer->fromArra($request->query->all(), AuthorizeRequest::class);
-        $authorizeDto = new AuthorizeRequest($request->query->all());
+        $authorizeDto = $this->serializer->fromArray($request->query->all(), AuthorizeRequest::class);
         $this->validatorAdapter->validate($authorizeDto);
-        dump($authorizeDto);
-        exit();
+        dump('fazer a validação do scope para saber se ele tem a permissão para isso');
         exit();
     }
 }

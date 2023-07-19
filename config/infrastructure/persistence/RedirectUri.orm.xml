@@ -1,5 +1,9 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
-    <entity name="App\Domain\Entity\RedirectUri" table="redirect_uri">
+    <entity
+            name="App\Domain\Entity\RedirectUri"
+            table="redirect_uri"
+            repository-class="App\Infrastructure\Repository\RedirectUriRepository"
+    >
         <id name="id" column="nu_seq_redirect_uri" type="integer">
             <generator strategy="IDENTITY"/>
         </id>
