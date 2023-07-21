@@ -6,6 +6,7 @@ use App\Domain\Adapter\Serializer\Serializer;
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
 use App\Presentation\Authorize\DTO\AuthorizeRequest;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,6 +23,11 @@ class GetAuthorizeAction
     {
         $authorizeDto = $this->serializer->fromArray($request->query->all(), AuthorizeRequest::class);
         $this->validatorAdapter->validate($authorizeDto);
+
+        return new RedirectResponse(
+            'http://auth-service.com.br:3030/login?'
+            . $request->server->get('QUERY_STRING')
+        );
         dump('fazer a validação do scope para saber se ele tem a permissão para isso');
         exit();
     }
