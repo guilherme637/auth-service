@@ -1,0 +1,17 @@
+App\Presentation\Authorize\DTO\AuthorizeRequest:
+  properties:
+    responseType:
+      type: string
+      serialized_name: response_type
+    clientId:
+      type: string
+      serialized_name: client_id
+    redirect_uri:
+      type: string
+      serialized_name: redirectUri
+    scope:
+      type: string
+      serialized_name: scope
+    state:
+      type: string
+      serialized_name: state

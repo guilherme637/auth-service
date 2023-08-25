@@ -26,7 +26,6 @@ class RedirectUriRepository extends ServiceEntityRepository
         $qb->where('client.clientId = :clientId');
         $qb->setParameter('clientId', $clientId);
 
-
         return $qb->getQuery()->getSingleResult();
     }
 }

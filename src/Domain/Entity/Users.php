@@ -11,7 +11,7 @@ class Users
     private string $username;
     private string $email;
     private string $password;
-    private Collection $scopes;
+    private string $scopes;
 
     public function __construct()
     {
@@ -58,13 +58,13 @@ class Users
         $this->password = $password;
     }
 
-    public function getScopes(): ArrayCollection
+    public function getScopes(): string
     {
         return $this->scopes;
     }
 
-    public function setScopes(ArrayCollection $scopes): void
+    public function setScopes(string $scopes): void
     {
-        $this->scopes = $scopes;
+        $this->scopes = ($scopes);
     }
 }

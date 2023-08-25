@@ -13,7 +13,7 @@ class ResponseTypeValidator extends ConstraintValidator
     {
         if ($value !== self::RESPONSE_TYPE) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('response_type', $value)
+                ->setParameter('response_type', $value ?? '')
                 ->addViolation()
             ;
         }

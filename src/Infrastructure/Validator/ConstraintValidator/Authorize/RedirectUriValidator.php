@@ -19,7 +19,7 @@ class RedirectUriValidator extends ConstraintValidator
 
         if (is_null($uriRedirect) || $uriRedirect->getUriRedirect() !== $value) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('redirect_uri', $value)
+                ->setParameter('redirect_uri', $value ?? 'redirect_uri')
                 ->addViolation()
             ;
         }
