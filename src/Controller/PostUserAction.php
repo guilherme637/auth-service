@@ -15,15 +15,16 @@ class PostUserAction
     #[Route(path: '/users', methods: ['POST'])]
     public function __invoke(ManagerRegistry $managerRegistry)
     {
-//        $scope = new UserScope();
-//        $scope->setDsScope('ROLE_USER');
+        $scope = new UserScope();
+        $scope->setDsScope('ROLE_USER');
+        $managerRegistry->getManager()->persist($scope);
+
         $users = new Users();
         $users->setEmail('teste@teste.com');
         $users->setUsername('guilherme');
         $users->setPassword(password_hash("123mudar", PASSWORD_ARGON2I, ['cost' => 12]));
-        $users->setScopes(1);
-//        $scope->setUsers($users);
-//        $managerRegistry->getManager()->persist($scope);
+        $users->setScopes($scope);
+
         $managerRegistry->getManager()->persist($users);
         $managerRegistry->getManager()->flush();
 

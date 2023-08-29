@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Subscriber;
 
+use App\Domain\Enum\URIEnum;
 use App\Infrastructure\Subscriber\Exception\Resolver\Resolver;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,16 +22,16 @@ class ResponseSubscriber implements EventSubscriberInterface
 
     public function onResponse(ExceptionEvent $event)
     {
-        dump($event->getThrowable());
-        exit();
-        $resolver = new Resolver();
-        $responseVO = $resolver->resolver($event->getThrowable());
+        if (!str_contains($event->getRequest()->getPathInfo(), '/login')) {
+            $resolver = new Resolver();
+            $responseVO = $resolver->resolver($event->getThrowable());
 
-        $event->setResponse(
-            new JsonResponse(
-                $responseVO->getResponse(),
-                $responseVO->getCode()
-            )
-        );
+            $event->setResponse(
+                new JsonResponse(
+                    $responseVO->getResponse(),
+                    $responseVO->getCode()
+                )
+            );
+        }
     }
 }

@@ -11,12 +11,9 @@ class Users
     private string $username;
     private string $email;
     private string $password;
-    private string $scopes;
-
-    public function __construct()
-    {
-        $this->scopes = new ArrayCollection();
-    }
+    private UserScope $scopes;
+    private string $authorizationCode;
+    private \DateTime $dtCode;
 
     public function getId(): int
     {
@@ -58,13 +55,33 @@ class Users
         $this->password = $password;
     }
 
-    public function getScopes(): string
+    public function getScopes(): UserScope
     {
         return $this->scopes;
     }
 
-    public function setScopes(string $scopes): void
+    public function setScopes(UserScope $scopes): void
     {
-        $this->scopes = ($scopes);
+        $this->scopes =  $scopes;
+    }
+
+    public function getCode(): string
+    {
+        return $this->authorizationCode;
+    }
+
+    public function setCode(string $authorizationCode): void
+    {
+        $this->authorizationCode = $authorizationCode;
+    }
+
+    public function getDtCode(): \DateTime
+    {
+        return $this->dtCode;
+    }
+
+    public function setDtCode(\DateTime $dtCode): void
+    {
+        $this->dtCode = $dtCode;
     }
 }

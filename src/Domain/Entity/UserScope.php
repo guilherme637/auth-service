@@ -13,16 +13,6 @@ class UserScope
         return $this->id;
     }
 
-    public function getUsers(): Users
-    {
-        return $this->users;
-    }
-
-    public function setUsers(Users $users): void
-    {
-        $this->users = $users;
-    }
-
     public function getDsScope(): string
     {
         return $this->dsScope;

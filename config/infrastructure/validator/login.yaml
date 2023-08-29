@@ -1,0 +1,11 @@
+App\Presentation\Authorize\DTO\LoginRequest:
+  properties:
+    email:
+      - NotBlank: { message: 'invalid_request' }
+      - App\Infrastructure\Validator\Constraint\Login\EmailNotExistConstraint: ~
+      - Email: ~
+    password:
+      - NotBlank: { message: 'invalid_request' }
+      - App\Infrastructure\Validator\Constraint\Login\PasswordInvalidConstraint: ~
+    token:
+      - App\Infrastructure\Validator\Constraint\Login\TokenInvalidConstraint: ~

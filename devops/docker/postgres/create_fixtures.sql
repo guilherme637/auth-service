@@ -27,20 +27,28 @@ CREATE TABLE IF NOT EXISTS users
     nu_seq_users serial PRIMARY KEY,
     username     VARCHAR(25) NOT NULL UNIQUE UNIQUE,
     email        VARCHAR(70) NOT NULL UNIQUE UNIQUE,
-    password     VARCHAR     NOT NULL
+    password     VARCHAR     NOT NULL,
+    code         VARCHAR(64),
+    dt_code      timestamp
 );
 
 CREATE TABLE IF NOT EXISTS users_scope
 (
     nu_seq_users_scope serial PRIMARY KEY,
-    nu_seq_users       INTEGER     NOT NULL,
-    ds_scope           VARCHAR(15) NOT NULL,
-
-    CONSTRAINT fk_nu_seq_users FOREIGN KEY (nu_seq_users) REFERENCES users (nu_seq_users)
+    ds_scope           VARCHAR(15) NOT NULL
 );
 
+-- CREATE TABLE IF NOT EXISTS authrization_code
+-- (
+--     nu_seq_authorization_code serial PRIMARY KEY,
+--     code           VARCHAR(64) NOT NULL,
+--     nu_seq_users   INTEGER NOT NULL,
+--
+--     CONSTRAINT nu_seq_authorization_code FOREIGN KEY (nu_seq_users) references users (nu_seq_users)
+-- );
+
 alter table users
-    add nu_seq_users_scope integer not null default 0,
+    add nu_seq_users_scope integer not null,
     add constraint fk_nu_seq_users_scope
         foreign key (nu_seq_users_scope) references users_scope (nu_seq_users_scope);
 

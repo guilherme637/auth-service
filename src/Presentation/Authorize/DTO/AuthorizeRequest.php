@@ -2,6 +2,10 @@
 
 namespace App\Presentation\Authorize\DTO;
 
+use App\Domain\Enum\URIEnum;
+use App\Domain\Enum\UrlEnum;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 class AuthorizeRequest
 {
     private ?string $responseType;
@@ -58,5 +62,20 @@ class AuthorizeRequest
     public function setState(?string $state): void
     {
         $this->state = $state;
+    }
+
+    public function makeLogin(): RedirectResponse
+    {
+        return new RedirectResponse(
+            UrlEnum::HOST->value
+            . sprintf(
+                URIEnum::LOGIN->value,
+                $this->responseType,
+                $this->clientId,
+                $this->redirectUri,
+                $this->scope,
+                $this->state
+            )
+        );
     }
 }

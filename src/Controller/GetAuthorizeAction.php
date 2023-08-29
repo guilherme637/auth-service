@@ -21,14 +21,10 @@ class GetAuthorizeAction
 
     public function __invoke(Request $request)
     {
+        /** @var AuthorizeRequest $authorizeDto */
         $authorizeDto = $this->serializer->fromArray($request->query->all(), AuthorizeRequest::class);
         $this->validatorAdapter->validate($authorizeDto);
 
-        return new RedirectResponse(
-            'http://auth-service.com.br:3030/login?'
-            . $request->server->get('QUERY_STRING')
-        );
-        dump('fazer a validação do scope para saber se ele tem a permissão para isso');
-        exit();
+        return $authorizeDto->makeLogin();
     }
 }

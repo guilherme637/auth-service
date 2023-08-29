@@ -2,14 +2,16 @@
 
 namespace App\Domain\VO;
 
-use App\Domain\Enum\CodeEnum;
-
 class ResponseVO
 {
+    private string $message;
+    private int $code;
     private array $response;
 
     public function __construct(\Throwable $throwable)
     {
+        $this->message = $throwable->getMessage();
+        $this->code = $throwable->getCode();
         $this->response = [
             'error' => $throwable->getMessage(),
 //            'error_description' =>
@@ -18,12 +20,12 @@ class ResponseVO
 
     public function getMessage(): string
     {
-        return $this->response['message'];
+        return $this->message;
     }
 
     public function getCode(): int
     {
-        return $this->response['code'];
+        return $this->code;
     }
 
     public function getResponse(): array
