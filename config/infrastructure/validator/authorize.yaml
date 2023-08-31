@@ -5,10 +5,10 @@ App\Presentation\Authorize\DTO\AuthorizeRequest:
       - App\Infrastructure\Validator\Constraint\Authorize\ResponseTypeInvalidConstraint: ~
     clientId:
       - NotBlank: { message: 'invalid_request' }
-      - App\Infrastructure\Validator\Constraint\Authorize\ClientIdInvalidConstraint: ~
+      - App\Infrastructure\Validator\Constraint\Common\ClientIdInvalidConstraint: ~
     redirectUri:
       - NotBlank: ~
-      - App\Infrastructure\Validator\Constraint\Authorize\RedirectUriInvalidConstraint: ~
+      - App\Infrastructure\Validator\Constraint\Common\RedirectUriInvalidConstraint: ~
     scope:
       - NotBlank: { message: 'invalid_request' }
     state:

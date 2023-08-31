@@ -1,0 +1,17 @@
+App\Presentation\Authorize\DTO\TokenRequest:
+  properties:
+    grant_type:
+      type: string
+      serialized_name: grantType
+    code:
+      type: string
+      serialized_name: code
+    client_id:
+      type: string
+      serialized_name: clientId
+    client_secret:
+      type: string
+      serialized_name: clienSecret
+    redirect_uri:
+      type: string
+      serialized_name: redirectUri

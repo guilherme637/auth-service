@@ -4,6 +4,7 @@ namespace App\Infrastructure\Repository;
 
 use App\Domain\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 class UsersRepository extends ServiceEntityRepository
@@ -44,6 +45,16 @@ class UsersRepository extends ServiceEntityRepository
             ->setParameter('email', $email)
             ->getQuery()
             ->getSingleResult();
+    }
+
+    public function getCode(string $code): array
+    {
+        return $this->createQueryBuilder('u')
+            ->select(['u.authorizationCode', 'u.dtCode'])
+            ->where('u.authorizationCode = :code')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     public function save(Users $user): void

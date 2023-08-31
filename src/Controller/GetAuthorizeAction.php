@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
-use App\Domain\Adapter\Serializer\Serializer;
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
+use App\Infrastructure\Utils\Crypt;
 use App\Presentation\Authorize\DTO\AuthorizeRequest;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,7 +14,7 @@ class GetAuthorizeAction
 {
     public function __construct(
         private ValidatorAdapterInterface $validatorAdapter,
-        private SerializerInterface $serializer
+        private SerializerInterface $serializer,
     ) {
     }
 

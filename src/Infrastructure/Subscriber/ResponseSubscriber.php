@@ -22,6 +22,8 @@ class ResponseSubscriber implements EventSubscriberInterface
 
     public function onResponse(ExceptionEvent $event)
     {
+        dump($event->getThrowable());
+        exit();
         if (!str_contains($event->getRequest()->getPathInfo(), '/login')) {
             $resolver = new Resolver();
             $responseVO = $resolver->resolver($event->getThrowable());

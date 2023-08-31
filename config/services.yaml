@@ -26,3 +26,7 @@ services:
     App\Controller\:
         resource: '../src/Controller/'
         tags: [ 'controller.service_arguments' ]
+
+    App\Infrastructure\Utils\Crypt:
+        arguments:
+            $path: '%kernel.project_dir%/config/infrastructure/certificado/'

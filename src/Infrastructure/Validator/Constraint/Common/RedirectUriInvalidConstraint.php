@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Validator\Constraint\Authorize;
+namespace App\Infrastructure\Validator\Constraint\Common;
 
-use App\Infrastructure\Validator\ConstraintValidator\Authorize\RedirectUriValidator;
+use App\Infrastructure\Validator\ConstraintValidator\Common\RedirectUriValidator;
 use Symfony\Component\Validator\Constraint;
 
 class RedirectUriInvalidConstraint extends Constraint

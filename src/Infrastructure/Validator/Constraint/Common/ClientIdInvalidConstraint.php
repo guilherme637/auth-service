@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Validator\Constraint\Authorize;
+namespace App\Infrastructure\Validator\Constraint\Common;
 
-use App\Infrastructure\Validator\ConstraintValidator\Authorize\ClientValidator;
+use App\Infrastructure\Validator\ConstraintValidator\Common\ClientValidator;
 use Symfony\Component\Validator\Constraint;
 
 class ClientIdInvalidConstraint extends Constraint

@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Infrastructure\Validator\ConstraintValidator\Login;
+namespace App\Infrastructure\Validator\ConstraintValidator\Token;
 
 use App\Infrastructure\Repository\UsersRepository;
-use App\Presentation\Authorize\DTO\LoginRequest;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class PasswordValidator extends ConstraintValidator
+class CodeValidator extends ConstraintValidator
 {
+    private const TEMPO_PERMITIDO_CODE = 1;
+
     public function __construct(private UsersRepository $usersRepository) {}
 
     public function validate($value, Constraint $constraint)
     {
-        /** @var LoginRequest $login */
-        $login = $this->context->getObject();
+        $code = $this->usersRepository->getCode($value);
+        /** @var \DateInterval $timeCode */
+        $timeCode = $code['dtCode']->diff(new \DateTime('now'));
 
-        if (
-            !password_verify($value, $this->usersRepository->getPasswordByEmail($login->getEmail()))
-        ) {
+        if ($timeCode->i >= self::TEMPO_PERMITIDO_CODE) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('password', $value)
+                ->setParameter('code', $value)
                 ->addViolation()
             ;
         }

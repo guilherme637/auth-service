@@ -13,4 +13,9 @@ class ClientService
     {
         return $this->clientRepository->findOneBy(['clientId' => $clientId]);
     }
+
+    public function getClientSecretByClientId(string $clientSecret): ?Client
+    {
+        return $this->clientRepository->findOneBy(['clientSecret' => $clientSecret]);
+    }
 }

@@ -8,7 +8,7 @@ jms_serializer:
     metadata:
         auto_detection: true
         directories:
-            serialize:
+            config:
                 namespace_prefix: "App\\Presentation\\DTO"
                 path: "%kernel.project_dir%/config/infrastructure/serializer"
 
@@ -31,3 +31,9 @@ when@dev:
         default_context:
             deserialization:
                 serialize_null: true
+        metadata:
+            auto_detection: true
+            directories:
+                config:
+                    namespace_prefix: "App\\Presentation\\DTO"
+                    path: "%kernel.project_dir%/config/infrastructure/serializer"
