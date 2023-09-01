@@ -47,6 +47,14 @@ class UsersRepository extends ServiceEntityRepository
             ->getSingleResult();
     }
 
+    public function getUserByCode(string $code): ?Users
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.authorizationCode = :code ')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getSingleResult();
+    }
     public function getCode(string $code): array
     {
         return $this->createQueryBuilder('u')

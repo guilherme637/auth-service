@@ -36,12 +36,12 @@ class Crypt
         if (!is_dir($pathProjeto)) {
             mkdir($pathProjeto);
         }
-
-        openssl_pkey_export($this->crypt, $privateKeyAuthService);
+        $privateKey = $pathProjeto . 'authservice/private-key.pem';
+        openssl_pkey_export($this->crypt, $privateKey, $this->getPassphrase($projeto));
         $public_key = openssl_pkey_get_details($this->crypt)['key'];
 
         file_put_contents($pathProjeto . self::PUBLIC_KEY, $public_key);
-        file_put_contents($pathProjeto . self::PRIVATE_KEY, $privateKeyAuthService);
+        file_put_contents($pathProjeto . self::PRIVATE_KEY, $privateKey);
     }
 
     private function getPassphrase(string $projeto): string
@@ -49,6 +49,10 @@ class Crypt
         $splitNomeProjeto = str_split($projeto);
         shuffle($splitNomeProjeto);
 
-        return implode('', $splitNomeProjeto);
+        $passphrase = hash('ripemd128', implode('', $splitNomeProjeto));
+
+        file_put_contents($this->path . $projeto . '/passphrase.txt', $passphrase);
+
+        return $passphrase;
     }
 }
