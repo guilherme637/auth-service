@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presentation\Authorize\DTO;
+namespace App\Presentation\DTO\Login;
 
 use App\Domain\Enum\URIEnum;
 use Symfony\Component\HttpFoundation\RedirectResponse;

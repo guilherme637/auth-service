@@ -9,6 +9,7 @@
         <field name="password" type="string" column="password"/>
         <field name="authorizationCode" type="string" column="code"/>
         <field name="dtCode" type="datetime" column="dt_code"/>
+        <field name="authorize" type="boolean" column="authorize"/>
         <one-to-one field="scopes" target-entity="App\Domain\Entity\UserScope">
             <join-column name="nu_seq_users_scope" referenced-column-name="nu_seq_users_scope" />
         </one-to-one>

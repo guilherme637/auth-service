@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presentation\Authorize\DTO;
+namespace App\Presentation\DTO\Token;
 
 class TokenRequest
 {

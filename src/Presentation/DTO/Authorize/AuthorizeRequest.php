@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presentation\Authorize\DTO;
+namespace App\Presentation\DTO\Authorize;
 
 use App\Domain\Enum\URIEnum;
 use App\Domain\Enum\UrlEnum;

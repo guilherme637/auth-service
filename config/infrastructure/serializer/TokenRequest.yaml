@@ -1,4 +1,4 @@
-App\Presentation\Authorize\DTO\TokenRequest:
+App\Presentation\Authorize\DTO\Token\TokenRequest:
   properties:
     grant_type:
       type: string

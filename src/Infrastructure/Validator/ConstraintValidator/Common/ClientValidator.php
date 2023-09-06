@@ -3,7 +3,7 @@
 namespace App\Infrastructure\Validator\ConstraintValidator\Common;
 
 use App\Infrastructure\Service\ClientService;
-use App\Presentation\Authorize\DTO\AuthorizeRequest;
+use App\Presentation\DTO\Authorize\AuthorizeRequest;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 

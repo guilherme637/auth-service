@@ -3,7 +3,7 @@
 namespace App\Infrastructure\Validator\ConstraintValidator\Login;
 
 use App\Infrastructure\Repository\UsersRepository;
-use App\Presentation\Authorize\DTO\LoginRequest;
+use App\Presentation\DTO\Login\LoginRequest;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 

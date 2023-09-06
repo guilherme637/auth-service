@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
-use App\Infrastructure\Utils\Crypt;
-use App\Presentation\Authorize\DTO\AuthorizeRequest;
+use App\Presentation\DTO\Authorize\AuthorizeRequest;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,7 +18,7 @@ class GetAuthorizeAction
     ) {
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): RedirectResponse
     {
         /** @var AuthorizeRequest $authorizeDto */
         $authorizeDto = $this->serializer->fromArray($request->query->all(), AuthorizeRequest::class);

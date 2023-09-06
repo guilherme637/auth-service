@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Validator\ConstraintValidator\Token;
 
-use App\Presentation\Authorize\DTO\TokenRequest;
+use App\Presentation\DTO\Token\TokenRequest;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 

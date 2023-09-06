@@ -4,8 +4,8 @@ namespace App\Infrastructure\Validator\ConstraintValidator\Common;
 
 use App\Domain\Entity\RedirectUri;
 use App\Infrastructure\Service\RedirectUriService;
-use App\Presentation\Authorize\DTO\AuthorizeRequest;
-use App\Presentation\Authorize\DTO\TokenRequest;
+use App\Presentation\DTO\Authorize\AuthorizeRequest;
+use App\Presentation\DTO\Token\TokenRequest;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 

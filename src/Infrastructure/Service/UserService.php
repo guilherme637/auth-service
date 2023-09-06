@@ -22,4 +22,9 @@ class UserService
     {
         return $this->usersRepository->getUser($email);
     }
+
+    public function getUserByCode(string $code): ?Users
+    {
+        return $this->usersRepository->getUserByCode($code);
+    }
 }

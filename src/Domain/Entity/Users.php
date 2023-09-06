@@ -14,6 +14,7 @@ class Users
     private UserScope $scopes;
     private string $authorizationCode;
     private \DateTime $dtCode;
+    private bool $authorize;
 
     public function getId(): int
     {
@@ -83,5 +84,15 @@ class Users
     public function setDtCode(\DateTime $dtCode): void
     {
         $this->dtCode = $dtCode;
+    }
+
+    public function isAuthorize(): bool
+    {
+        return $this->authorize;
+    }
+
+    public function setAuthorize(bool $authorize): void
+    {
+        $this->authorize = $authorize;
     }
 }

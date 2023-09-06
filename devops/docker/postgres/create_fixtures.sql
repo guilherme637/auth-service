@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS users
     email        VARCHAR(70) NOT NULL UNIQUE UNIQUE,
     password     VARCHAR     NOT NULL,
     code         VARCHAR(64),
-    dt_code      timestamp
+    dt_code      timestamp,
+    authorize    BOOLEAN default false
 );
 
 CREATE TABLE IF NOT EXISTS users_scope
