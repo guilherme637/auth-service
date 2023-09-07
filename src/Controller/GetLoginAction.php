@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
 use App\Infrastructure\Service\LoginService;
+use App\Infrastructure\Validator\Constraint\Login\EmailNotExistConstraint;
+use App\Infrastructure\Validator\Constraint\Login\PasswordInvalidConstraint;
 use App\Presentation\DTO\Authorize\AuthorizeRequest;
 use App\Presentation\DTO\Login\LoginRequest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class GetLoginAction extends AbstractController
 {
@@ -36,6 +39,7 @@ class GetLoginAction extends AbstractController
             $login = $this->serializer->fromArray($purifyHtml, LoginRequest::class);
 
             $this->validatorAdapter->validate($login);
+            $request->getSession()->remove('error');
 
             return $login->doRedirect(
                 $authorizeDto->getRedirectUri(),
@@ -45,7 +49,10 @@ class GetLoginAction extends AbstractController
         }
 
 
-        return $this->render('base.html.twig', ['forms' => $this->getForm($authorizeDto, $request)]);
+        return $this->render('base.html.twig', [
+            'forms' => $this->getForm($authorizeDto, $request),
+            'error' => $request->getSession()->get('error') ?? null
+        ]);
     }
 
     public function getForm(AuthorizeRequest $authorizeDto, Request $request): FormView
@@ -53,7 +60,7 @@ class GetLoginAction extends AbstractController
         $options = [
             'required' => true,
             'attr' => [
-                'class' => 'form-control'
+                'class' => 'form-control color-input-login'
             ]
         ];
 

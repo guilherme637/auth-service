@@ -1,4 +1,4 @@
-App\Presentation\Authorize\DTO\LoginRequest:
+App\Presentation\DTO\Login\LoginRequest:
   properties:
     email:
       - NotBlank: { message: 'invalid_request' }

@@ -32,7 +32,7 @@ class LoginRequest
         return $this->clientId;
     }
 
-    public function doRedirect(string $url, string $state, string $code)
+    public function doRedirect(string $url, string $state, string $code): RedirectResponse
     {
         return new RedirectResponse($url . sprintf(URIEnum::CHECK->value, $state, $code));
     }

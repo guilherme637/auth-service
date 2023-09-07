@@ -13,6 +13,7 @@ class AuthorizeRequest
     private ?string $redirectUri;
     private ?string $scope;
     private ?string $state;
+    private ?string $error;
 
     public function getResponseType(): ?string
     {
@@ -62,6 +63,16 @@ class AuthorizeRequest
     public function setState(?string $state): void
     {
         $this->state = $state;
+    }
+
+    public function getError(): ?string
+    {
+        return $this->error ?? null;
+    }
+
+    public function setError(?string $error): void
+    {
+        $this->error = $error;
     }
 
     public function makeLogin(): RedirectResponse

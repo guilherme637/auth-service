@@ -1,4 +1,4 @@
-App\Presentation\Authorize\DTO\AuthorizeRequest:
+App\Presentation\DTO\Authorize\AuthorizeRequest:
   properties:
     responseType:
       - NotBlank: { message: 'invalid_request' }

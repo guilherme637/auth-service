@@ -1,4 +1,4 @@
-App\Presentation\Authorize\DTO\TokenRequest:
+App\Presentation\DTO\Token\TokenRequest:
   properties:
     grantType:
       - NotBlank: { message: 'invalid_request' }
