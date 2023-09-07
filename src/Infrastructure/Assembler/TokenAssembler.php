@@ -14,7 +14,11 @@ class TokenAssembler
             'iss' => UrlEnum::HOST->value,
             'exp' => time() + (60 * 60),
             'aud' => 'api:' . $client->getClientName(),
-            'sub' => $users->getId(),
+            'sub' => [
+                'id' => $users->getId(),
+                'username' => $users->getUsername(),
+                'email' => $users->getEmail()
+            ],
             'client_id' => $client->getClientId(),
             'iat' => time(),
             'scope' => $users->getScopes()->getDsScope()

@@ -21,6 +21,11 @@ class TokenService
 
         $assemblerTokenResponse = TokenAssembler::assemblerTokenResponse($client, $user);
 
-        return new TokenResponse(JWT::encode($assemblerTokenResponse, Crypt::getKeyToJwt($client), self::ALG));
+        return new TokenResponse(
+            JWT::encode(
+                $assemblerTokenResponse,
+                Crypt::getKeyToJwt($client),
+                self::ALG)
+        );
     }
 }
