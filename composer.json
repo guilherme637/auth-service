@@ -7,7 +7,7 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/annotations": "^2.0",
+        "doctrine/annotations": "*",
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.15",
@@ -24,7 +24,8 @@
         "symfony/twig-bundle": "5.4.*",
         "symfony/validator": "5.4.*",
         "symfony/yaml": "5.4.*",
-        "tobion/openapi-symfony-routing": "^1.2"
+        "tobion/openapi-symfony-routing": "^1.2",
+        "zircote/swagger-php": "*"
     },
     "config": {
         "allow-plugins": {
