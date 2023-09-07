@@ -1,0 +1,12 @@
+App\Presentation\DTO\Login\LoginRequest:
+  exclusion_policy: ALL
+  properties:
+    email:
+      type: string
+      serialized_name: email
+    password:
+      type: string
+      serialized_name: password
+    token:
+      type: string
+      serialized_name: _token

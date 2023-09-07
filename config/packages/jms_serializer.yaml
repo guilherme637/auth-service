@@ -5,6 +5,7 @@ jms_serializer:
     default_context:
         serialization:
             serialize_null: true
+
     metadata:
         auto_detection: true
         directories:
@@ -12,14 +13,14 @@ jms_serializer:
                 namespace_prefix: "App\\Presentation\\DTO"
                 path: "%kernel.project_dir%/config/infrastructure/serializer"
 
-#when@prod:
-#    jms_serializer:
-#        visitors:
-#            json_serialization:
-#                options:
-#                    - JSON_UNESCAPED_SLASHES
-#                    - JSON_PRESERVE_ZERO_FRACTION
-#
+when@prod:
+    jms_serializer:
+        visitors:
+            json_serialization:
+                options:
+                    - JSON_UNESCAPED_SLASHES
+                    - JSON_PRESERVE_ZERO_FRACTION
+
 when@dev:
     jms_serializer:
         visitors:
@@ -28,12 +29,3 @@ when@dev:
                     - JSON_PRETTY_PRINT
                     - JSON_UNESCAPED_SLASHES
                     - JSON_PRESERVE_ZERO_FRACTION
-        default_context:
-            deserialization:
-                serialize_null: true
-        metadata:
-            auto_detection: true
-            directories:
-                config:
-                    namespace_prefix: "App\\Presentation\\DTO"
-                    path: "%kernel.project_dir%/config/infrastructure/serializer"

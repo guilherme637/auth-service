@@ -3,13 +3,10 @@
 namespace App\Infrastructure\Subscriber;
 
 use App\Domain\Enum\CodeEnum;
-use App\Domain\Enum\URIEnum;
-use App\Domain\Enum\UrlEnum;
 use App\Infrastructure\Subscriber\Exception\Resolver\Resolver;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 

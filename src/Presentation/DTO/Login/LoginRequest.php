@@ -9,7 +9,7 @@ class LoginRequest
 {
     private string $email;
     private string $password;
-    private string $token;
+    private string $_token;
     private string $clientId;
 
     public function getEmail(): string
@@ -24,7 +24,7 @@ class LoginRequest
 
     public function getToken(): string
     {
-        return $this->token;
+        return $this->_token;
     }
 
     public function getClientId(): string

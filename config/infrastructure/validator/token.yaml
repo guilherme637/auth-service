@@ -5,7 +5,7 @@ App\Presentation\DTO\Token\TokenRequest:
       - App\Infrastructure\Validator\Constraint\Token\GrantTypeInvalidConstraint: ~
     code:
       - NotBlank: { message: 'invalid_request' }
-#      - App\Infrastructure\Validator\Constraint\Token\CodeExpireConstraint: ~
+      - App\Infrastructure\Validator\Constraint\Token\CodeExpireConstraint: ~
     clientId:
       - NotBlank: { message: 'invalid_request' }
       - App\Infrastructure\Validator\Constraint\Common\ClientIdInvalidConstraint: ~
