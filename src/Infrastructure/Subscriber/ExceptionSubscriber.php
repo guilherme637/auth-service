@@ -24,6 +24,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
 
     public function onResponse(ExceptionEvent $event)
     {
+        dump($event->getThrowable());exit();
         $resolver = new Resolver();
         $responseVO = $resolver->resolver($event->getThrowable());
 

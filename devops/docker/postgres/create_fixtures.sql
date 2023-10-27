@@ -69,7 +69,7 @@ alter table client_scope
 --     '1614aed6e5adb9f44d8c56370a9f77cb0940c221c4e14cdc86444576dae7af9d',
 --     'http://myfinance.com.br:3030/check',
 --     2
--- );
+-- -- );
 -- insert into scopes values (DEFAULT, 'create');
 -- insert into scopes values (DEFAULT, 'read');
 -- insert into scopes values (DEFAULT, 'update');

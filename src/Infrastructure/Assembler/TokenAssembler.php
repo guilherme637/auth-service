@@ -10,6 +10,8 @@ class TokenAssembler
 {
     public static function assemblerTokenResponse(Client $client, Users $users): array
     {
+        date_default_timezone_set('America/Sao_Paulo');
+
         return [
             'iss' => UrlEnum::HOST->value,
             'exp' => time() + (60 * 60),

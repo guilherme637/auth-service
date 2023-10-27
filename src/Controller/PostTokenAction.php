@@ -25,7 +25,7 @@ class PostTokenAction
         $purify = (new HtmlPurifyAdapter())->purifyFromArray($request->request->all());
         /** @var TokenRequest $tokenRequest */
         $tokenRequest = $this->serializer->fromArray($purify, TokenRequest::class);
-        $this->validator->validate($tokenRequest);
+//        $this->validator->validate($tokenRequest);
 
         return new JsonResponse(
             $this->serializer->toArray(

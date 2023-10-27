@@ -4,25 +4,32 @@ services:
     build:
       context: .
       dockerfile: ./devops/docker/php/Dockerfile
+    environment:
+      - TZ=America/Sao_Paulo
     volumes:
       - .:/var/www/html/auth-service:rw
+      - ./devops/docker/php/php.ini-development:/usr/local/etc/php/php.ini-development
+      - ./devops/docker/php/php.ini-production:/usr/local/etc/php/php.ini-production
     networks:
-      - backend
+      - external-net
 
   apache2_auth_service:
     container_name: apache
     build:
       context: .
       dockerfile: ./devops/docker/apache/Dockerfile
+    environment:
+      - TZ=America/Sao_Paulo
     ports:
-      - 3030:80
+      - 3031:80
     volumes:
       - .:/var/www/html/auth-service:rw
-      - ./devops/docker/apache/vhosts/api.conf:/etc/apache2/sites-enabled/default.conf
+      - ./devops/docker/apache/vhosts/default.conf:/etc/apache2/sites-enabled/000-default.conf
     networks:
-      - backend
+      - external-net
     depends_on:
       - php_auth_service
+
   db_auth_service:
     container_name: postgres
     build:
@@ -39,8 +46,9 @@ services:
       - .:/var/lib/postegresql/data:rw
       - ./devops/docker/postgres/create_fixtures.sql:/docker-entrypoint-initdb.d/create_fixtures.sql
     networks:
-      backend:
+      external-net:
 
 networks:
-  backend:
-    driver: bridge
+  external-net:
+    external:
+      name: external-net

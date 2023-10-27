@@ -14,6 +14,8 @@
         "ezyang/htmlpurifier": "^4.16",
         "firebase/php-jwt": "^6.8",
         "jms/serializer-bundle": "^5.3",
+        "nelmio/cors-bundle": "^2.3",
+        "symfony/asset": "5.4.*",
         "symfony/console": "5.4.*",
         "symfony/dotenv": "5.4.*",
         "symfony/flex": "^1.17|^2",
