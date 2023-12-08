@@ -2,12 +2,16 @@
 
 namespace App\Infrastructure\Service;
 
+use App\Domain\Adapter\Redis\RedisAdapterInterface;
 use App\Domain\Entity\Users;
 use App\Infrastructure\Repository\UsersRepository;
 
 class UserService
 {
-    public function __construct(private UsersRepository $usersRepository) {}
+    public function __construct(
+        private readonly UsersRepository $usersRepository,
+        private readonly RedisAdapterInterface $redisAdapter
+    ) {}
 
     public function updateCode(string $email, string $code): void
     {
@@ -16,6 +20,7 @@ class UserService
         $user->setDtCode(new \DateTime('now'));
 
         $this->usersRepository->update();
+        $this->redisAdapter->setExpKey($email, 120, $code);
     }
 
     public function getUser(string $email): ?Users

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a20a994060b7dba958ffd28ea62b299",
+    "content-hash": "f7a22d50e48a7bf97af32a7535b022ac",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1459,16 +1459,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v6.8.1",
+            "version": "v6.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "5dbc8959427416b8ee09a100d7a8588c00fb2e26"
+                "reference": "f03270e63eaccf3019ef0f32849c497385774e11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/5dbc8959427416b8ee09a100d7a8588c00fb2e26",
-                "reference": "5dbc8959427416b8ee09a100d7a8588c00fb2e26",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/f03270e63eaccf3019ef0f32849c497385774e11",
+                "reference": "f03270e63eaccf3019ef0f32849c497385774e11",
                 "shasum": ""
             },
             "require": {
@@ -1516,9 +1516,9 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.8.1"
+                "source": "https://github.com/firebase/php-jwt/tree/v6.9.0"
             },
-            "time": "2023-07-14T18:33:00+00:00"
+            "time": "2023-10-05T00:24:42+00:00"
         },
         {
             "name": "jms/metadata",
@@ -6006,6 +6006,48 @@
                 "source": "https://github.com/zircote/swagger-php/tree/3.1.0"
             },
             "time": "2020-09-03T20:18:43+00:00"
+        },
+        {
+            "name": "zuske/auth-authentication",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guilherme637/auth-authentication.git",
+                "reference": "1a3c27435c87074408dbbea01aff0f3c9a2e5960"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guilherme637/auth-authentication/zipball/1a3c27435c87074408dbbea01aff0f3c9a2e5960",
+                "reference": "1a3c27435c87074408dbbea01aff0f3c9a2e5960",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "firebase/php-jwt": "^6.9",
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Auth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "guilherme",
+                    "email": "guilhermjr296@icloud.com"
+                }
+            ],
+            "description": "Management authentication",
+            "support": {
+                "issues": "https://github.com/guilherme637/auth-authentication/issues",
+                "source": "https://github.com/guilherme637/auth-authentication/tree/1.1.0"
+            },
+            "time": "2023-10-28T20:39:06+00:00"
         }
     ],
     "packages-dev": [],
@@ -6017,8 +6059,9 @@
     "platform": {
         "php": ">=8.2",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-redis": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

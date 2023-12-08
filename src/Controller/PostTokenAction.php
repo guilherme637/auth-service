@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Domain\Adapter\HTMLPurify\HtmlPurifyAdapter;
+use App\Domain\Adapter\Redis\RedisAdapterInterface;
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
 use App\Infrastructure\Service\TokenService;
@@ -25,7 +26,7 @@ class PostTokenAction
         $purify = (new HtmlPurifyAdapter())->purifyFromArray($request->request->all());
         /** @var TokenRequest $tokenRequest */
         $tokenRequest = $this->serializer->fromArray($purify, TokenRequest::class);
-//        $this->validator->validate($tokenRequest);
+        $this->validator->validate($tokenRequest);
 
         return new JsonResponse(
             $this->serializer->toArray(

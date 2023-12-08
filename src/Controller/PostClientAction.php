@@ -8,7 +8,7 @@ use App\Domain\Entity\RedirectUri;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(path: '/client', name: 'create_client', methods: ['POST'])]
+#[Route(path: '/client', name: 'create_client', methods: ['POST', 'GET'])]
 class PostClientAction
 {
     public function __invoke(EntityManagerInterface $entityManager)

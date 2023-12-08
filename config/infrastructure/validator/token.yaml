@@ -12,6 +12,6 @@ App\Presentation\DTO\Token\TokenRequest:
     clientSecret:
       - NotBlank: { message: 'invalid_request' }
       - App\Infrastructure\Validator\Constraint\Token\ClientSecretInvalidConstraint: ~
-    redirectUri:
-      - NotBlank: { message: 'invalid_request' }
-      - App\Infrastructure\Validator\Constraint\Common\RedirectUriInvalidConstraint: ~
+#    redirectUri:
+#      - NotBlank: { message: 'invalid_request' }
+#      - App\Infrastructure\Validator\Constraint\Common\RedirectUriInvalidConstraint: ~

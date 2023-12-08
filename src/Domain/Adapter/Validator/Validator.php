@@ -20,8 +20,8 @@ class Validator implements ValidatorAdapterInterface
         if (count($errors) > 0) {
             /** @var ConstraintViolation $constraint */
             $constraint = $errors[0];
-
-            throw new BadRequestHttpException($errors[0]->getMessage());
+  
+            throw new BadRequestHttpException($constraint->getMessage());
         }
     }
 }

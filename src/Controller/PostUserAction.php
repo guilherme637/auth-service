@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostUserAction
 {
-    #[Route(path: '/users', methods: ['POST'])]
+    #[Route(path: '/users', methods: ['POST', 'GET'])]
     public function __invoke(ManagerRegistry $managerRegistry)
     {
         $scope = new UserScope();

@@ -3,10 +3,9 @@
 namespace App\Infrastructure\Service;
 
 use App\Infrastructure\Assembler\TokenAssembler;
-use App\Infrastructure\Utils\Crypt;
 use App\Presentation\DTO\Token\TokenRequest;
 use App\Presentation\DTO\Token\TokenResponse;
-use Firebase\JWT\JWT;
+use Auth\Token;
 
 class TokenService
 {
@@ -22,10 +21,7 @@ class TokenService
         $assemblerTokenResponse = TokenAssembler::assemblerTokenResponse($client, $user);
 
         return new TokenResponse(
-            JWT::encode(
-                $assemblerTokenResponse,
-                Crypt::getKeyToJwt($client),
-                self::ALG)
+            Token::getJwt($assemblerTokenResponse, $client->getClientName())
         );
     }
 }

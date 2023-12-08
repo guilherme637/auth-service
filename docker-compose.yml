@@ -8,10 +8,14 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - .:/var/www/html/auth-service:rw
-      - ./devops/docker/php/php.ini-development:/usr/local/etc/php/php.ini-development
-      - ./devops/docker/php/php.ini-production:/usr/local/etc/php/php.ini-production
+      -  /certificates:/certificates
+      - ./devops/docker/php/php.ini:/usr/local/etc/php/php.ini
+#      - ./devops/docker/php/php.ini:/usr/local/etc/php/php.ini
+#      - ./devops/docker/php/php.ini-production:/usr/local/etc/php/php.ini-production
     networks:
       - external-net
+    extra_hosts:
+      - redis:host-gateway
 
   apache2_auth_service:
     container_name: apache
@@ -50,5 +54,4 @@ services:
 
 networks:
   external-net:
-    external:
-      name: external-net
+    external: true

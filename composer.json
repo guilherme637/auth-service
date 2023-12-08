@@ -7,6 +7,7 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-redis": "*",
         "doctrine/annotations": "*",
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -27,7 +28,8 @@
         "symfony/validator": "5.4.*",
         "symfony/yaml": "5.4.*",
         "tobion/openapi-symfony-routing": "^1.2",
-        "zircote/swagger-php": "*"
+        "zircote/swagger-php": "*",
+        "zuske/auth-authentication": "~1.1.0"
     },
     "config": {
         "allow-plugins": {

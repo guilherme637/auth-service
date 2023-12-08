@@ -2,23 +2,29 @@
 
 namespace App\Infrastructure\Validator\ConstraintValidator\Token;
 
+use App\Domain\Adapter\Redis\RedisAdapterInterface;
 use App\Infrastructure\Repository\UsersRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 class CodeValidator extends ConstraintValidator
 {
-    private const TEMPO_PERMITIDO_CODE = 1;
+    private const TEMPO_PERMITIDO_CODE = -2;
 
-    public function __construct(private UsersRepository $usersRepository) {}
+    public function __construct(
+        private readonly UsersRepository $usersRepository,
+        private readonly RedisAdapterInterface $redisAdapter
+    ) {}
 
     public function validate($value, Constraint $constraint)
     {
-        $code = $this->usersRepository->getCode($value);
-        /** @var \DateInterval $timeCode */
-        $timeCode = $code['dtCode']->diff(new \DateTime('now'));
+        $key = $this->usersRepository->getEmailByCode($value);
+        $code = $this->redisAdapter->get($key);
 
-        if ($timeCode->i >= self::TEMPO_PERMITIDO_CODE) {
+        if (
+            $code !== $value
+            || $this->redisAdapter->getTtl($key) === self::TEMPO_PERMITIDO_CODE
+        ) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('code', $value)
                 ->addViolation()

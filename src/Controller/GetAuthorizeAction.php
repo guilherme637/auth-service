@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Domain\Adapter\Redis\RedisAdapterInterface;
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
 use App\Presentation\DTO\Authorize\AuthorizeRequest;
@@ -15,6 +16,7 @@ class GetAuthorizeAction
     public function __construct(
         private ValidatorAdapterInterface $validatorAdapter,
         private SerializerInterface $serializer,
+        private RedisAdapterInterface $redisAdapter
     ) {
     }
 

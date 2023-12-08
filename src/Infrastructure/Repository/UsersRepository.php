@@ -55,6 +55,7 @@ class UsersRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleResult();
     }
+
     public function getCode(string $code): array
     {
         return $this->createQueryBuilder('u')
@@ -63,6 +64,18 @@ class UsersRepository extends ServiceEntityRepository
             ->setParameter('code', $code)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function getEmailByCode(string $code): ?string
+    {
+        $email = $this->createQueryBuilder('u')
+            ->select('u.email')
+            ->where('u.authorizationCode = :code')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getSingleResult();
+
+        return current($email) ?? null;
     }
 
     public function save(Users $user): void

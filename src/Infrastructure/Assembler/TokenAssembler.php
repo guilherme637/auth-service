@@ -10,8 +10,6 @@ class TokenAssembler
 {
     public static function assemblerTokenResponse(Client $client, Users $users): array
     {
-        date_default_timezone_set('America/Sao_Paulo');
-
         return [
             'iss' => UrlEnum::HOST->value,
             'exp' => time() + (60 * 60),
@@ -19,11 +17,11 @@ class TokenAssembler
             'sub' => [
                 'id' => $users->getId(),
                 'username' => $users->getUsername(),
-                'email' => $users->getEmail()
+                'email' => $users->getEmail(),
+                'scope' => $users->getScopes()->getDsScope()
             ],
             'client_id' => $client->getClientId(),
-            'iat' => time(),
-            'scope' => $users->getScopes()->getDsScope()
+            'iat' => time()
         ];
     }
 }
