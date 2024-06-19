@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Validator\ConstraintValidator\Common;
 
-use App\Infrastructure\Service\ClientService;
+use App\Infrastructure\Service\Client\ClientService;
 use App\Presentation\DTO\Authorize\AuthorizeRequest;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;

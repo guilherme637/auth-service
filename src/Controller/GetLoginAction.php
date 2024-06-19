@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
-use App\Infrastructure\Service\LoginService;
+use App\Domain\Service\Login\LoginServiceInterface;
 use App\Presentation\DTO\Authorize\AuthorizeRequest;
 use App\Presentation\DTO\Login\LoginRequest;
 use App\Presentation\Templates\FormType\LoginFormType;
@@ -17,7 +17,7 @@ class GetLoginAction extends AbstractController
     public function __construct(
         private ValidatorAdapterInterface $validatorAdapter,
         private SerializerInterface $serializer,
-        private LoginService $loginService
+        private LoginServiceInterface $loginService
     ) {}
 
     #[Route(path: '/login', methods: ['POST', 'GET'])]

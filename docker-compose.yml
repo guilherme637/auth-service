@@ -8,7 +8,7 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - .:/var/www/html/auth-service:rw
-      -  /certificates:/certificates
+      -  /projetos/auth-service/config/infrastructure/certificado:/certificates
       - ./devops/docker/php/php.ini:/usr/local/etc/php/php.ini
 #      - ./devops/docker/php/php.ini:/usr/local/etc/php/php.ini
 #      - ./devops/docker/php/php.ini-production:/usr/local/etc/php/php.ini-production

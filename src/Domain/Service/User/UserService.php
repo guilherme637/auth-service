@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\Domain\Service\User;
 
 use App\Domain\Adapter\Redis\RedisAdapterInterface;
 use App\Domain\Entity\Users;
 use App\Infrastructure\Repository\UsersRepository;
 
-class UserService
+class UserService implements UserServiceInterface
 {
     public function __construct(
         private readonly UsersRepository $usersRepository,

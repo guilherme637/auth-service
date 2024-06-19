@@ -26,7 +26,7 @@ class LoginFormType extends AbstractType
                 'email',
                 EmailType::class, [
                     'attr' => [
-                        'class' => 'form-control color-input-login'
+                        'class' => 'form-control form-control-lg'
                     ]
                 ]
             )
@@ -35,7 +35,7 @@ class LoginFormType extends AbstractType
                 PasswordType::class,
                 [
                     'attr' => [
-                        'class' => 'form-control color-input-login'
+                        'class' => 'form-control form-control-lg'
                     ]
                 ]
             )

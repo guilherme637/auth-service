@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\Infrastructure\Service\Client;
 
 use App\Domain\Entity\Client;
 use App\Infrastructure\Repository\ClientRepository;
 
-class ClientService
+class ClientService implements ClientServiceInterface
 {
     public function __construct(private ClientRepository $clientRepository) {}
 

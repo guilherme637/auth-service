@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Validator\ConstraintValidator\Token;
 
-use App\Infrastructure\Service\ClientService;
+use App\Infrastructure\Service\Client\ClientService;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 

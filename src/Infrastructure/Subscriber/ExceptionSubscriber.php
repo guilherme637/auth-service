@@ -24,7 +24,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
 
     public function onResponse(ExceptionEvent $event)
     {
-//        dump($event->getThrowable());exit();
+        dump($event->getThrowable());exit();
         $resolver = new Resolver();
         $responseVO = $resolver->resolver($event->getThrowable());
 
@@ -40,7 +40,8 @@ class ExceptionSubscriber implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         $throwable = $event->getThrowable();
-
+        dump($throwable);
+        exit();
         if (
             str_contains($event->getRequest()->getPathInfo(), '/login')
             && $throwable->getCode() === CodeEnum::BAD_REQUEST->value

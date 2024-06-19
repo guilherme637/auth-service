@@ -2,8 +2,7 @@
 
 namespace App\Infrastructure\Validator\ConstraintValidator\Common;
 
-use App\Domain\Entity\RedirectUri;
-use App\Infrastructure\Service\RedirectUriService;
+use App\Domain\Service\RedirectUri\RedirectUriServiceInterface;
 use App\Presentation\DTO\Authorize\AuthorizeRequest;
 use App\Presentation\DTO\Token\TokenRequest;
 use Symfony\Component\Validator\Constraint;
@@ -11,19 +10,14 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class RedirectUriValidator extends ConstraintValidator
 {
-    public function __construct(private RedirectUriService $uriService) {}
+    public function __construct(private RedirectUriServiceInterface $uriService) {}
 
     public function validate($value, Constraint $constraint)
     {
         /** @var AuthorizeRequest|TokenRequest $authorizeDto */
         $dto = $this->context->getObject();
-        $uriRedirect = $this->uriService->getUriByClientId($dto->getClientId());
 
-        $hasRedirect = $uriRedirect->exists(function (int $index, RedirectUri $redirectUri) use ($value) {
-            return $redirectUri->getUriRedirect() === $value;
-        });
-
-        if (is_null($uriRedirect) || !$hasRedirect) {
+        if ($this->uriService->checkClientId($dto->getClientId())) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('redirect_uri', $value ?? 'redirect_uri')
                 ->addViolation()

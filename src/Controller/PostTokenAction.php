@@ -3,10 +3,9 @@
 namespace App\Controller;
 
 use App\Domain\Adapter\HTMLPurify\HtmlPurifyAdapter;
-use App\Domain\Adapter\Redis\RedisAdapterInterface;
 use App\Domain\Adapter\Serializer\SerializerInterface;
 use App\Domain\Adapter\Validator\ValidatorAdapterInterface;
-use App\Infrastructure\Service\TokenService;
+use App\Domain\Service\Token\TokenServiceInterface;
 use App\Presentation\DTO\Token\TokenRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +16,7 @@ class PostTokenAction
     public function __construct(
         private SerializerInterface $serializer,
         private ValidatorAdapterInterface $validator,
-        private TokenService $tokenService
+        private TokenServiceInterface $tokenService
     ) {}
 
     #[Route('/token', name: 'app_posttokenaction__invoke', methods: ['POST'])]

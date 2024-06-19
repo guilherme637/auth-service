@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\Domain\Service\Login;
 
 use App\Domain\Adapter\HTMLPurify\HtmlPurifyAdapter;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
+use App\Domain\Service\User\UserServiceInterface;
 
-class LoginService
+class LoginService implements LoginServiceInterface
 {
-    public function __construct(private UserService $userService) {}
-
-    public function authorize(Request $request)
-    {
-        return new RedirectResponse('http://auth-service.com.br:3030/teste');
-    }
+    public function __construct(private UserServiceInterface $userService) {}
 
     public function sanityzeHtml(array $form): array
     {

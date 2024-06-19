@@ -1,17 +1,22 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\Domain\Service\Token;
 
+use App\Domain\Service\User\UserServiceInterface;
 use App\Infrastructure\Assembler\TokenAssembler;
+use App\Infrastructure\Service\Client\ClientService;
 use App\Presentation\DTO\Token\TokenRequest;
 use App\Presentation\DTO\Token\TokenResponse;
 use Auth\Token;
 
-class TokenService
+class TokenService implements TokenServiceInterface
 {
     private const ALG = 'RS256';
 
-    public function __construct(private ClientService $clientService, private UserService $userService) {}
+    public function __construct(
+        private ClientService $clientService,
+        private UserServiceInterface $userService
+    ) {}
 
     public function generateToken(TokenRequest $tokenRequest): TokenResponse
     {
