@@ -29,7 +29,7 @@ class GetLoginAction extends AbstractController
         $this->validatorAdapter->validate($authorizeDto);
 
         if ($request->getMethod() === 'POST') {
-            $purifyHtml = $this->loginService->sanityzeHtml($request->request->get('login_form'));
+            $purifyHtml = $this->loginService->sanityzeHtml($request->get('login_form'));
             /** @var LoginRequest $login */
             $login = $this->serializer->fromArray($purifyHtml, LoginRequest::class);
             $this->validatorAdapter->validate($login);

@@ -6,6 +6,7 @@ use App\Domain\Entity\Client;
 use App\Domain\Entity\ClientScope;
 use App\Domain\Entity\RedirectUri;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route(path: '/client', name: 'create_client', methods: ['POST', 'GET'])]
@@ -41,5 +42,7 @@ class PostClientAction
         $entityManager->persist($redirectUri);
         $entityManager->persist($client);
         $entityManager->flush();
+
+        return new JsonResponse([]);
     }
 }
